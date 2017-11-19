@@ -17,10 +17,9 @@ public class adminactivity extends AppCompatActivity {
         startActivity(Question);
     }
 
-//public void ViewQuestions(View view) {
-//    Intent disp = new Intent(this, view_questions.class);
-//    startActivity(disp);
-//}
-//
+public void ViewQuestions(View view) {
+    Intent disp = new Intent(this, ViewQuestions.class);
+    startActivity(disp);
+}
 
 }

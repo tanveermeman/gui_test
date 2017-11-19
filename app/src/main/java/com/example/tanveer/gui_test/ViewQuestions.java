@@ -2,6 +2,7 @@ package com.example.tanveer.gui_test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,11 +40,13 @@ public class ViewQuestions extends AppCompatActivity {
         fetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                demoRef.child("value").addListenerForSingleValueEvent(new ValueEventListener() {
+                demoRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String value = dataSnapshot.getValue(String.class);
+                        String value = dataSnapshot.getValue().toString();
+                        
                         demoValue.setText(value);
+                        Log.d("ADebugTag", "Question number : " + value);
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
