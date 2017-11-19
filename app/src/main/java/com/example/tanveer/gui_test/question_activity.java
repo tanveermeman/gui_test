@@ -50,7 +50,8 @@ public class question_activity extends AppCompatActivity {
 
                 myquestion.put("correctAnswer", correctAnswer.getText().toString());
                 // Log.d("ADebugTag", "myquestion : " + Arrays.toString(myquestion));
-                 mDatabase.child("questions").child(Integer.toString(randomInt)).setValue(myquestion);
+                // mDatabase.child("questions").child(Integer.toString(randomInt)).setValue(myquestion);
+                mDatabase.child("questions").push().setValue(myquestion);
             }
 
 
