@@ -6,7 +6,7 @@ package com.example.tanveer.gui_test;
 
 public class QuestionLibrary {
 
-    private String mQuestions[] = {
+    public static String mQuestions[] = {
             "What is the full form of IP ?",
             "C++ is what type of language ?",
             "How many layers are there in the OSI model ?",

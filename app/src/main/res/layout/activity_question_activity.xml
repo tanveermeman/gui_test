@@ -12,87 +12,90 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/QuestionBox"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/Header1"
             android:layout_marginTop="13dp"
             android:ems="10"
             android:inputType="none|textPersonName"
             android:text="Question" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/Header1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/editText"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="23dp"
             android:text="Enter the question below" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/Header2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="46dp"
+            android:layout_below="@+id/QuestionBox"
+            android:layout_centerHorizontal="true"
             android:text="Enter the choices below" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/ChoiceABox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_below="@+id/textView4"
+            android:layout_below="@+id/Header2"
             android:layout_marginTop="29dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Choice A" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/ChoiceBBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText2"
-            android:layout_below="@+id/editText2"
+            android:layout_below="@+id/ChoiceABox"
             android:layout_marginTop="13dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Choice B" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/ChoiceCBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText3"
-            android:layout_below="@+id/editText3"
+            android:layout_below="@+id/ChoiceBBox"
             android:layout_marginTop="11dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Choice C" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/ChoiceDBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editText4"
-            android:layout_below="@+id/editText4"
+            android:layout_below="@+id/ChoiceCBox"
             android:layout_marginTop="11dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Choice D" />
 
+        <EditText
+            android:id="@+id/CorrectAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ChoiceDBox"
+            android:layout_marginTop="11dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Correct Answer" />
+
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/SaveQButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/editText5"
+            android:layout_below="@+id/ChoiceDBox"
             android:layout_marginEnd="27dp"
             android:layout_marginTop="25dp"
             android:text="SAVE" />
+
+
     </RelativeLayout>
 </LinearLayout>
