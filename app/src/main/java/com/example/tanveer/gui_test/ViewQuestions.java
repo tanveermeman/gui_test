@@ -14,13 +14,62 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ViewQuestions extends AppCompatActivity {
 
     EditText editText;
     Button submit, fetch;
     DatabaseReference rootRef, demoRef;
     TextView demoValue;
+    final HashMap<String, String > Quesitons[] = new HashMap[0];
 
+    public void getQuestions(){
+        //database reference pointing to root of database
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
+        //database reference pointing to demo node
+        demoRef = rootRef.child("questions");
+        //database reference pointing to root of database
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
+        //database reference pointing to demo node
+        demoRef = rootRef.child("questions");
+
+        demoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                HashMap<String, String> map = (HashMap<String,String>) dataSnapshot.getValue();
+
+                //Log.d("TAG", String.format("map: %s", map));
+                Log.d("TAG", String.format("map: %s", map.keySet().getClass().toString()));
+/*                for (DataSnapshot questionObject: dataSnapshot.getChildren()) {
+                    String question = (String) questionObject.child("question").getValue();
+                    Log.d("ADebugTag", "Question number : " + question.toString());
+
+                    String choiceA = (String) questionObject.child("choiceA").getValue();
+                    Log.d("ADebugTag", "Question number : " + choiceA.toString());
+
+                    String choiceB = (String) questionObject.child("choiceB").getValue();
+                    Log.d("ADebugTag", "Question number : " + choiceB.toString());
+
+                    String choiceC = (String) questionObject.child("choiceC").getValue();
+                    Log.d("ADebugTag", "Question number : " + choiceC.toString());
+
+                    String choiceD = (String) questionObject.child("choiceD").getValue();
+                    Log.d("ADebugTag", "Question number : " + choiceD.toString());
+
+                    String answer = (String) questionObject.child("correctAnswer").getValue();
+                    Log.d("ADebugTag", "Correct Answer is  : " + choiceC.toString());
+                }*/
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +79,13 @@ public class ViewQuestions extends AppCompatActivity {
         demoValue = (TextView) findViewById(R.id.tvValue);
         fetch = (Button) findViewById(R.id.fetch);
 
-        //database reference pointing to root of database
-        rootRef = FirebaseDatabase.getInstance().getReference();
 
-        //database reference pointing to demo node
-        demoRef = rootRef.child("questions");
 
 
         fetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                demoRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        String value = dataSnapshot.getValue().toString();
-                        
-                        demoValue.setText(value);
-                        Log.d("ADebugTag", "Question number : " + value);
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+                getQuestions();
             }
         });
     }
