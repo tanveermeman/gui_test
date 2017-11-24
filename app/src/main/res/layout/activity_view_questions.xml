@@ -7,13 +7,10 @@
     android:orientation="vertical"
     tools:context="com.example.tanveer.gui_test.ViewQuestions">
 
-    <TextView
+    <ExpandableListView
         android:id="@+id/tvValue"
-        android:layout_width="360dp"
-        android:layout_height="428dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="73dp" />
+        android:layout_width="372dp"
+        android:layout_height="409dp" />
 
     <Button
         android:id="@+id/fetch"

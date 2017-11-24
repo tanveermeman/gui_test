@@ -2,16 +2,21 @@ package com.example.tanveer.gui_test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
+
 public class Mcqactivity extends AppCompatActivity {
 
-        private QuestionLibrary mQuestionLibrary = new QuestionLibrary();
+    private QuestionLibrary mQuestionLibrary = new QuestionLibrary();
+                                                                     
 
-        private TextView mScoreView;
+    private TextView mScoreView;
         private TextView mQuestionView;
         private TextView mButtonChoice1;
         private TextView mButtonChoice2;
@@ -25,18 +30,26 @@ public class Mcqactivity extends AppCompatActivity {
         private int mQuestionNumber = 0;
 
 
+
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_mcqactivity);
+
+
+
+           /* Log.d("msg","mQuestions[]"+Arrays.toString(mQuestions));
+            System.out.println(Arrays.toString(mQuestions));
+*/
 
             mScoreView = (TextView)findViewById(R.id.score);
             mQuestionView = (TextView)findViewById(R.id.question);
             mButtonChoice1 = (Button)findViewById(R.id.choice1);
             mButtonChoice2 = (Button)findViewById(R.id.choice2);
             mButtonChoice3 = (Button)findViewById(R.id.choice3);
-            //mButtonChoice4 = (Button)findViewById(R.id.choice4);
-
+            mButtonChoice4 = (Button)findViewById(R.id.choice4);
             updateQuestion();
 
 
@@ -55,7 +68,10 @@ public class Mcqactivity extends AppCompatActivity {
                     }
                     else {
                         Toast.makeText(Mcqactivity.this,"wrong",Toast.LENGTH_SHORT).show();
+                        updateQuestion();
+
                     }
+                    //updateQuestion();
                 }
             });
 
@@ -76,6 +92,8 @@ public class Mcqactivity extends AppCompatActivity {
                     }
                     else {
                         Toast.makeText(Mcqactivity.this,"wrong",Toast.LENGTH_SHORT).show();
+                        updateQuestion();
+
                     }
                 }
             });
@@ -97,6 +115,8 @@ public class Mcqactivity extends AppCompatActivity {
                     }
                     else {
                         Toast.makeText(Mcqactivity.this,"wrong",Toast.LENGTH_SHORT).show();
+                        updateQuestion();
+
                     }
                 }
             });
@@ -104,39 +124,43 @@ public class Mcqactivity extends AppCompatActivity {
             // End of button listener button 3
 
             //start button listener for button 4
-            // mButtonChoice4.setOnClickListener(new View.OnClickListener() {
-            //     @Override
-            //     public void onClick(View view) {
-            //         //logic for the button goes here
-            //
-            //         if (mButtonChoice4.getText() == mAnswer){
-            //             mScore = mScore + 1;
-            //             updateScore(mScore);
-            //             updateQuestion();
-            //             //this line is optional code
-            //             Toast.makeText(McqActivity.this,"correct",Toast.LENGTH_SHORT).show();
-            //         }
-            //         else {
-            //             Toast.makeText(McqActivity.this,"wrong",Toast.LENGTH_SHORT).show();
-            //         }
-            //     }
-            // });
-            //
+             mButtonChoice4.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     //logic for the button goes here
+
+                     if (mButtonChoice4.getText() == mAnswer){
+                         mScore = mScore + 1;
+                         updateScore(mScore);
+                         updateQuestion();
+                         //this line is optional code
+                         Toast.makeText(Mcqactivity.this,"correct",Toast.LENGTH_SHORT).show();
+                     }
+                     else {
+                         Toast.makeText(Mcqactivity.this,"wrong",Toast.LENGTH_SHORT).show();
+                            updateQuestion();
+
+                     }
+                 }
+             });
+
             // End of button listener button 4
 
 
         }
 
         private void updateQuestion(){
-
+            Log.d("DEBUG", "UPDATE QUESTION CALLED");
+                        mButtonChoice1.setText("BLAH");
+                                                  Log.d("DEBUG", "SET TEXT CALLED");
             mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
-            mButtonChoice1.setText(mQuestionLibrary.getChoice1(mQuestionNumber));
-            mButtonChoice2.setText(mQuestionLibrary.getChoice2(mQuestionNumber));
-            mButtonChoice3.setText(mQuestionLibrary.getChoice3(mQuestionNumber));
-            //mButtonChoice4.setText(mQuestionLibrary.getChoice4(mQuestionNumber));
+            mButtonChoice1.setText(mQuestionLibrary.getChoice1(mQuestionNumber+1));
+            mButtonChoice2.setText(mQuestionLibrary.getChoice2(mQuestionNumber+2));
+            mButtonChoice3.setText(mQuestionLibrary.getChoice3(mQuestionNumber+3));
+            mButtonChoice4.setText(mQuestionLibrary.getChoice4(mQuestionNumber+4));
 
-            mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
-            mQuestionNumber++;
+            mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber+5);
+            mQuestionNumber = mQuestionNumber +6;
         }
 
         private void updateScore(int point) {

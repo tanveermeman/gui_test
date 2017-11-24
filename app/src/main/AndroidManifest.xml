@@ -20,6 +20,7 @@
         <activity android:name=".question_activity" />
         <activity android:name=".Mcqactivity" />
         <activity android:name=".ViewQuestions"></activity>
+        <activity android:name=".QuestionLibrary" />
     </application>
 
 </manifest>
