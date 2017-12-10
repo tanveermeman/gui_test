@@ -7,17 +7,10 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    public QuestionLibrary myQ = new QuestionLibrary();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
     }
 
     public void admin_login(View view) {
